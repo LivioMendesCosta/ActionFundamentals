@@ -29,7 +29,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          branch: 'release-notes'
+          branch: 'github-actions-demo'
           sha: '${{ github.event.pull_request.head.sha }}'
 
       - name: List files in the repository
