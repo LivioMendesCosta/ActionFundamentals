@@ -24,6 +24,11 @@ jobs:
           echo "Branch: ${{ github.ref }}"
 
       - uses: actions/checkout@v3.3.0
+      
+      - run: |
+          git checkout -b newbranch
+          echo "aaa" > file.txt
+          git push origin newbranch
 
       - name: List files in the repository
         run: |
