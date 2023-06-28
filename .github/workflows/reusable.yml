@@ -28,5 +28,5 @@ jobs:
       - name: Set variables
         id: output-vars
         run: |
-          echo "::set-output name=current-time::$(date)"
-          echo "::set-output name=current-os::$(uname -o)"
+          echo "current-time=$(date)" >> $GITHUB_OUTPUT
+          echo "current-os=$(uname -o)" >> $GITHUB_OUTPUT
