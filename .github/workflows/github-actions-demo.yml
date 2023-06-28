@@ -32,7 +32,7 @@ jobs:
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           branch: 'github-actions-demo'
           sha: '${{ github.event.pull_request.head.sha }}'
 
