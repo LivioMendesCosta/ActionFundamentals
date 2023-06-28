@@ -12,6 +12,9 @@ on:
       current-time:
         description: 'The time when greeting'
         value: ${{ jobs.reusable-job.outputs.current-time }}
+      current-os:
+        description: 'The os when greeting'
+        value: ${{ jobs.reusable-job.outputs.current-os }}
 
 jobs:
   reusable-job:
