@@ -18,11 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       current-time: ${{ steps.time.outputs.current-time }}
+      current-os: ${{ steps.time.outputs.current-os }}
     steps:
       - name: Greet someone
         run: echo "Hello ${{ inputs.who-to-greet }}"
-      - name: Set time
-        id: time
+      - name: Set variables
+        id: output-vars
         run: |
-          echo "::set-output name=current-time::$(date)"
-          echo "::set-output name=os::$(uname -a)"
+          echo "current-time=$(date)" >> GITHUB_OUTPUT
+          echo "current-os=$(uname -a)" >> GITHUB_OUTPUT
