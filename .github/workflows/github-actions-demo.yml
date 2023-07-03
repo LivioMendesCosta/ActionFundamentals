@@ -10,8 +10,8 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron: '15 6 * * *'
+#  schedule:
+#    - cron: '15 6 * * *'
   
   workflow_dispatch:
 
