@@ -37,6 +37,7 @@ jobs:
         id: checkUserMember
         with:
           username: ${{ github.actor }}
+          organization: "nosportugal"
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
        
       - name: Belongs team
