@@ -37,11 +37,10 @@ jobs:
         id: checkUserMember
         with:
           username: ${{ github.actor }}
-          team: 'octocats'
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
        
       - name: Belongs team
-        run: echo isTeamMember - ${{ steps.checkUserMember.outputs.isTeamMember }}
+        run: echo "Teams - ${{ steps.checkUserMember.outputs.teams }}"
         
   GitHub-Vars:
     runs-on: ubuntu-latest
