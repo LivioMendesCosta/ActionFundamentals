@@ -42,7 +42,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
        
       - name: Belongs team
-        run: echo "Teams - ${{ steps.checkUserMember.outputs }}"
+        run: echo "Teams - ${{ steps.checkUserMember.outputs.isTeamMember }}"
         
   GitHub-Vars:
     runs-on: ubuntu-latest
