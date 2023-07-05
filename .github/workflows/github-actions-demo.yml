@@ -26,19 +26,28 @@ on:
           - DEBUG
 
 jobs:
-  Build:
+  Inputs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the input
-        run: echo  The logLevel is ${{ inputs.logLevel }} 
+        run: echo  The logLevel is ${{ inputs.logLevel }}
         
-      - run: |
+  GitHub-Vars:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print github vars
+        run: |
           echo "Event name: ${{ github.event_name }}"
           echo "Branch: ${{ github.ref }}"
-
-      - uses: actions/checkout@v3.3.0
+          
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3.3.0
       
-      - run: |
+      - name: Print github JSON
+        run: |
           echo "${{ toJSON(github) }}"
       
 #      - uses: peterjgrainger/action-create-branch@v2.2.0
