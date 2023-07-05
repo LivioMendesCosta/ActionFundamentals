@@ -18,19 +18,19 @@ on:
       logLevel:
         description: 'Log level'
         required: true
-        default: 'warning'
+        default: 'INFO'
         type: choice
         options:
-          - info
-          - warning
-          - debug
+          - INFO
+          - WARNING
+          - DEBUG
 
 jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print the input tag to STDOUT
-        run: echo  The tags are ${{ inputs.tags }} 
+      - name: Print the input
+        run: echo  The logLevel is ${{ inputs.logLevel }} 
         
       - run: |
           echo "Event name: ${{ github.event_name }}"
