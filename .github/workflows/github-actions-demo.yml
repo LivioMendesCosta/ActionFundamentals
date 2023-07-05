@@ -31,6 +31,17 @@ jobs:
     steps:
       - name: Print the input
         run: echo  The logLevel is ${{ inputs.logLevel }}
+      
+      - name: Get team members
+        uses: tspascoal/get-user-teams-membership@v2
+        id: checkUserMember
+        with:
+          username: ${{ github.actor }}
+          team: 'octocats'
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+       
+      - name: Belongs team
+        run: echo isTeamMember - ${{ steps.checkUserMember.outputs.isTeamMember }}
         
   GitHub-Vars:
     runs-on: ubuntu-latest
