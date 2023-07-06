@@ -26,7 +26,7 @@ on:
           - DEBUG
 
 jobs:
-  Inputs:
+  Inputs1:
     runs-on: ubuntu-latest
     steps:
       - name: Print the input
@@ -45,6 +45,7 @@ jobs:
         run: echo "Teams - ${{ steps.checkUserMember.outputs.isTeamMember }}"
         
   GitHub-Vars:
+    needs: Inputs
     runs-on: ubuntu-latest
     steps:
       - name: Print github vars
