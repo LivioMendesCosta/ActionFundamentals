@@ -26,7 +26,7 @@ on:
           - DEBUG
 
 jobs:
-  Inputs1:
+  Inputs:
     runs-on: ubuntu-latest
     steps:
       - name: Print the input
