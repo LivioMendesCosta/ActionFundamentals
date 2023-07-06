@@ -47,7 +47,7 @@ jobs:
   GitHub-Vars:
     needs: Inputs
     runs-on: ubuntu-latest
-    if: ${{ jobs.Inputs.steps.checkUserMember.outputs.isTeamMember == 'true' }}
+    if: ${{ needs.Inputs.steps.checkUserMember.outputs.isTeamMember == 'true' }}
     steps:
       - name: Print github vars
         run: |
