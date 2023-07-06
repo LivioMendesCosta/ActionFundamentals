@@ -38,7 +38,7 @@ jobs:
         with:
           username: ${{ github.actor }}
           organization: "nosportugal"
-          team: "octacts" #"dsi-devops-cm-cicd"
+          team: "dsi-devops-cm-cicd"
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
        
       - name: Belongs team
