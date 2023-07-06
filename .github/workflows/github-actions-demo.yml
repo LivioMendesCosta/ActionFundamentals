@@ -36,7 +36,7 @@ jobs:
         uses: tspascoal/get-user-teams-membership@v2
         id: checkUserMember
         with:
-          username: "rrlcortesao" #${{ github.actor }}
+          username: ${{ github.actor }}
           organization: "nosportugal"
           team: "dsi-devops-cm-cicd"
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
