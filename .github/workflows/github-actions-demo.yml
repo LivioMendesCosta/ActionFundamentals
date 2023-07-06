@@ -46,10 +46,10 @@ jobs:
         
   GitHub-Vars:
     needs: Inputs
+    if: needs.Inputs.steps.checkUserMember.outputs.isTeamMember == true
     runs-on: ubuntu-latest
     steps:
       - name: Print github vars
-        if: ${{ needs.Inputs.steps.checkUserMember.outputs.isTeamMember == true }}
         run: |
           echo "Event name: ${{ github.event_name }}"
           echo "Branch: ${{ github.ref }}"
