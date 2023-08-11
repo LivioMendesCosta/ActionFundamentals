@@ -39,7 +39,7 @@ jobs:
           username: ${{ github.actor }}
           organization: "nosportugal"
           team: "dsi-devops-cm-cicd"
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
        
       - name: Belongs team
         run: echo "Teams - ${{ steps.checkUserMember.outputs.isTeamMember }}"
