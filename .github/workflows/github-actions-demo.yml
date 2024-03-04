@@ -26,6 +26,16 @@ on:
           - DEBUG
 
 jobs:
+  CreatePR:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: test
+          branch-suffix: timestamp
+          title: "Merge main into test"
+          body: "Merge main into test"
   Inputs:
     runs-on: ubuntu-latest
     steps:
