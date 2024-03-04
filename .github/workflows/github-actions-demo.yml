@@ -28,12 +28,12 @@ on:
 jobs:
   CreatePR:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ github.token }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
       - name: Create pull request
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh pr create --base test --title "The bug is fixed" --body "Everything works again"
   Inputs:
