@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-       - '.github/**'
+#    paths-ignore:
+#       - '.github/**'
        
   pull_request:
     branches:
@@ -33,6 +33,11 @@ jobs:
   CreatePR:
     runs-on: ubuntu-latest
     steps:
+      - name: Print workflows inputs
+        run: |
+          echo "Commit : ${{ inputs.commit }}"
+          echo "Event_name : ${{ github.event_name }}"
+          
       - name: Checkout repo
         uses: actions/checkout@v4
         
@@ -40,7 +45,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr create --base test --title "Merge main into test" --body "Merge main into test"
+          gh pr create --base test --title "Merge main into test" --body "Merge main into test
   Inputs:
     runs-on: ubuntu-latest
     steps:
