@@ -41,6 +41,10 @@ jobs:
           
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      - name: Print sha
+        run: |
+          echo "SHA : ${{ github.sha }}"
         
       - name: Create pull request
         env:
