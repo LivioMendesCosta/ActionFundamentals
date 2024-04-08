@@ -51,7 +51,7 @@ jobs:
 
       - name: Print sha
         run: |
-          echo "SHA : ${{ github.sha }}"
+          echo "SHA : $(git rev-parse HEAD)"
           cat .github/workflows/github-actions-demo.yml
         
       - name: Create pull request
