@@ -24,6 +24,10 @@ on:
           - INFO
           - WARNING
           - DEBUG
+      commit:
+        description: 'Commit to deploy'
+        required: true
+        default: 'main'
 
 jobs:
   CreatePR:
