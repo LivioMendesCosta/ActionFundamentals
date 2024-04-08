@@ -40,7 +40,14 @@ jobs:
           echo "Event_name : ${{ github.event_name }}"
           
       - name: Checkout repo
+        if: inputs.commit == ''
         uses: actions/checkout@v4
+
+      - name: Checkout repo with input
+        if: inputs.commit != ''
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.commit }}
 
       - name: Print sha
         run: |
