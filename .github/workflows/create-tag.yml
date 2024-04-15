@@ -1,4 +1,5 @@
-name: Bump version
+name: Create tag
+
 on:
   workflow_dispatch:
   
