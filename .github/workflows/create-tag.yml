@@ -2,7 +2,15 @@ name: Create tag
 
 on:
   workflow_dispatch:
-  
+    inputs:
+      version-type:
+        type: choice
+        description: Tag type
+        options:
+          - major
+          - minor
+          - patch
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,7 +22,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: "major"
+          default_bump: ${{ inputs.version-type }}
           
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
