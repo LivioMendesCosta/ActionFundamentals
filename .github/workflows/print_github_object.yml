@@ -17,6 +17,7 @@ jobs:
       - name: Print Event Type
         run: |
           echo "${{ github.event_name }}"
+          echo "${{ github.base_ref || github.ref_name }}"
 
       - name: Print github JSON
         run: |
