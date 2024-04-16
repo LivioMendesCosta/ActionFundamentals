@@ -3,10 +3,6 @@ name: Create tag
 on:
   workflow_dispatch:
     inputs:
-      commit:
-        description: Commit
-        type: string
-        default: main
       version-type:
         type: choice
         description: Tag type
@@ -25,7 +21,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: ${{ inputs.version-type }}
-          commit_sha: ${{ inputs.commit }}
           
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
