@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Print Event Type
         run: |
+          echo "${{ github.event.pull_request.merged }}"
+          echo "${{ github.event.pull_request.merged == false }}"
           echo "${{ github.event_name }}"
           echo "${{ github.base_ref || github.ref_name }}"
 
