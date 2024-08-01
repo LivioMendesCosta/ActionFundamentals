@@ -9,11 +9,31 @@ on:
       - main
     types: ["closed"]
   workflow_dispatch:
+    inputs:
+      commit:
+        description: "Commit"
+        required: true
+        default: "main"
 
 jobs:        
   GitHub:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        if: github.event_name  != 'workflow_dispatch'
+        uses: actions/checkout@v4
+
+      - name: Checkout code with commit
+        if: github.event_name  == 'workflow_dispatch'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.commit }}
+
+      - name: Set outputs
+        id: vars
+        run: |
+          git rev-parse HEAD
+
       - name: Print Event Type
         run: |
           echo "${{ github.event.pull_request.merged }}"
