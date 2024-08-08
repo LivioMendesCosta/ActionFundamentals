@@ -56,6 +56,9 @@ jobs:
           echo ""
           echo SHA2
           echo "${{ steps.sha2.outcome }}"
+          echo ""
+          echo CONCLUSION
+          echo "${{ steps.sha2.conclusion }}"
 
       - name: Print Event Type
         run: |
