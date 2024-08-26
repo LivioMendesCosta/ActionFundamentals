@@ -30,6 +30,11 @@ jobs:
         with:
           ref: ${{ inputs.commit }}
 
+      - name: UUIDGEN
+        id: uuidgen
+        run: |
+          echo "UUIDGEN: $(uuidgen)"
+
       - name: Get GITHUB_SHA 1
         id: sha1
         run: |
