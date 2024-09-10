@@ -1,6 +1,9 @@
 name: Print GitHub Object
 
 on:
+  repository_dispatch:
+    types:
+      - print_github_object
   push:
     branches:
       - main
