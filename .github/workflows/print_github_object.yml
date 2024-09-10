@@ -37,6 +37,11 @@ jobs:
         id: env-vars
         run: env
 
+      - name: print client_payload
+        id: payload
+        run: |
+          echo ${{ github.event.client_payload }}
+
       - name: UUIDGEN
         id: uuidgen
         run: |
