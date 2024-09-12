@@ -87,3 +87,18 @@ jobs:
       - name: Print github JSON
         run: |
           echo "${{ toJSON(github) }}"
+          cat <<EOF > scan_result.sarif
+          {
+            "top1": "A",
+            "top2": {
+              "sub1": "A1",
+              "sub2": "A2"
+            }
+          }
+          EOF
+
+      - name: Upload file
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan_result.sarif
+          path: scan_result.sarif
