@@ -48,13 +48,13 @@ jobs:
           echo "UUIDGEN: $(uuidgen)"
 
       - name: Get GITHUB_SHA 1
-        if: inputs.commit != 'main'
+        if: ${{ inputs.commit != 'main' }}
         id: sha1
         run: |
           echo "GITHUB_SHA: $GITHUB_SHA"
 
       - name: Failure1
-        if: always() && inputs.commit != 'main'
+        if: always() && ${{ inputs.commit != 'main' }}
         id: failure1
         run: echo ${{ steps.sha1.outcome }}
 
