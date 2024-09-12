@@ -65,6 +65,10 @@ jobs:
           exit 2
         continue-on-error: true
 
+      - name: Failure
+        id: failure
+        run: echo ${{ steps.sha2.outcome }}
+
       - name: Write step status
         id: step-status
         run: |
