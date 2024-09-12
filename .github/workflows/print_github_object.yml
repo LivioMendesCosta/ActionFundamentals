@@ -72,7 +72,7 @@ jobs:
         id: sha2
         run: |
           echo "GITHUB_SHA: $GITHUB_SHA"
-          exit 1
+          exit 0
 
       - name: Failure2
         if: always()
@@ -82,7 +82,7 @@ jobs:
       - name: Failure1+2
         if: always()
         id: failure12
-        run: echo ${{ steps.sha1.outcome && steps.sha2.outcome }}
+        run: echo ${{ steps.uuidgen.outcome && steps.sha1.outcome && steps.sha2.outcome }}
 
       - name: Write step status
         id: step-status
