@@ -26,6 +26,9 @@ on:
 
 jobs:
   Job1:
+    environment:
+      name: dummy
+      url: https://www.google.pt
     runs-on: ubuntu-latest
     if: true
     steps:
