@@ -1,6 +1,7 @@
 name: Print GitHub Object
 
 on:
+  issues:
   repository_dispatch:
     types:
       - print_github_object
