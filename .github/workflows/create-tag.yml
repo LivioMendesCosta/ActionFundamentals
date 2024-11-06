@@ -30,3 +30,4 @@ jobs:
           body: "skip ci" #${{ steps.tag_version.outputs.changelog }}
           commit: "pr_test"
           removeArtifacts: true
+          skipIfReleaseExists: true
