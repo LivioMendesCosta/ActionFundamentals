@@ -25,9 +25,8 @@ jobs:
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          tag: "aaa" #${{ steps.tag_version.outputs.new_tag }}
-          name: "Release aaa" #${{ steps.tag_version.outputs.new_tag }}
+          tag: "bbb" #${{ steps.tag_version.outputs.new_tag }}
+          name: "Release bbb" #${{ steps.tag_version.outputs.new_tag }}
           body: "skip ci" #${{ steps.tag_version.outputs.changelog }}
           commit: "pr_test"
-          removeArtifacts: true
-          skipIfReleaseExists: true
+          generateReleaseNotes: true
