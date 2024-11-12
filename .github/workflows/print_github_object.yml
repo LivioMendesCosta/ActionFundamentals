@@ -25,6 +25,9 @@ on:
         type: boolean
         default: false
 
+env:
+  BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
+
 jobs:
   Job1:
     environment:
@@ -63,6 +66,7 @@ jobs:
       - name: print client_payload
         id: payload
         run: |
+          echo "BRANCH_NAME: ${{ env.BRANCH_NAME }}"
           echo "${{ toJson(github.event.client_payload) }}"
 
       - name: UUIDGEN
