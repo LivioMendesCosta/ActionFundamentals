@@ -15,6 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: true
       matrix:
         fruit: [apple, pear]
         animal: [cat, dog]
