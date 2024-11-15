@@ -19,7 +19,7 @@ jobs:
         fruit: [apple, pear]
         animal: [cat, dog]
         exclude:
-          - color: green
+          - animal: dog
         include:
           - color: green
     #      - color: pink
