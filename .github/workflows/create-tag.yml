@@ -32,7 +32,7 @@ jobs:
     #        animal: cat
     steps:
       - name: Print
-        run: echo "$GITHUB_ACTION - $GITHUB_ACTION_PATH - ${{ matrix.fruit }} - ${{ matrix.animal }} - ${{ matrix.color }} - ${{ matrix.shape }}"
+        run: echo "$GITHUB_ACTION - $GITHUB_EVENT_PATH - ${{ matrix.fruit }} - ${{ matrix.animal }} - ${{ matrix.color }} - ${{ matrix.shape }}"
         env:
           ACTIONS_STEP_DEBUG: true
       #- name: Bump version and push tag
