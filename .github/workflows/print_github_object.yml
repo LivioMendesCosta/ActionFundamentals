@@ -169,8 +169,8 @@ jobs:
           }
           EOF
 
-      - name: Upload file
-        uses: actions/upload-artifact@v4
-        with:
-          name: scan_result.sarif
-          path: scan_result.sarif
+#      - name: Upload file
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: scan_result.sarif
+#          path: scan_result.sarif
