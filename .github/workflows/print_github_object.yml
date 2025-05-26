@@ -34,7 +34,7 @@ env:
 jobs:
   Job1:
     environment:
-      name: ${{ inputs.environment == 'prd' && 'prd-reviewers' || '' }}
+      name: ${{ inputs.environment == 'prd' && 'prd-reviewers' }}
       url: https://argocd-qms.nos.pt/applications/argocd/my-app
     runs-on: ubuntu-latest
     if: true
