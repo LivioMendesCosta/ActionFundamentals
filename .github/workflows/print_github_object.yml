@@ -24,6 +24,9 @@ on:
         description: "Flag"
         type: boolean
         default: false
+      environment:
+        description: "Environment"
+        type: environment
 
 env:
   BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
@@ -31,7 +34,7 @@ env:
 jobs:
   Job1:
     environment:
-      name: dummy
+      name: ${{ inputs.environment == 'prd' && 'prd-reviewers' || '' }}
       url: https://argocd-qms.nos.pt/applications/argocd/my-app
     runs-on: ubuntu-latest
     if: true
