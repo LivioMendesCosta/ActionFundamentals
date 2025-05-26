@@ -44,6 +44,7 @@ jobs:
         run: |
           echo "my_var=1" >> $GITHUB_ENV
           echo myvar=$my_var
+          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
       - name: Print 11
         id: print11
         run: |
