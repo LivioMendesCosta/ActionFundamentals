@@ -41,10 +41,12 @@ jobs:
     steps:
       - name: Print 1
         id: print1
+        env:
+          ENVIRONMENT: ${{ inputs.environment == 'prd' && join(inputs.environment,'-reviewers') || '' }}
         run: |
           echo "my_var=1" >> $GITHUB_ENV
           echo myvar=$my_var
-          echo "ENVIRONMENT = ${{ inputs.environment == 'prd' && join(inputs.environment,'-reviewers') || '' }}"
+          echo "ENVIRONMENT = $ENVIRONMENT"
 
       - name: Generate list using Markdown
         run: |
