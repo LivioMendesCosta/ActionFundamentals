@@ -50,6 +50,11 @@ jobs:
 
       - name: Generate list using Markdown
         run: |
+          echo "# Header 1" >> $GITHUB_STEP_SUMMARY
+          echo "## Header 2" >> $GITHUB_STEP_SUMMARY
+          echo "### Header 3" >> $GITHUB_STEP_SUMMARY
+          echo "#### Header 4" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
           echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
           echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
@@ -60,6 +65,8 @@ jobs:
         id: print11
         run: |
           echo myvar=$my_var
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "myvar=$my_var" >> $GITHUB_STEP_SUMMARY
 
   Job2:
     runs-on: ubuntu-latest
