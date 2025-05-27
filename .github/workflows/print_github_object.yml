@@ -34,7 +34,7 @@ env:
 jobs:
   Job1:
     environment:
-      name: ${{ inputs.environment == 'prd' && inputs.environment'-reviewers' || '' }}
+      name: ${{ inputs.environment == 'prd' && join(inputs.environment,'-reviewers') || '' }}
       url: https://argocd-qms.nos.pt/applications/argocd/my-app
     runs-on: ubuntu-latest
     if: true
@@ -44,7 +44,7 @@ jobs:
         run: |
           echo "my_var=1" >> $GITHUB_ENV
           echo myvar=$my_var
-          echo "ENVIRONMENT = ${{ inputs.environment == 'prd' && inputs.environment + '-reviewers' || '' }}"
+          echo "ENVIRONMENT = ${{ inputs.environment == 'prd' && join(inputs.environment,'-reviewers') || '' }}"
 
       - name: Generate list using Markdown
         run: |
