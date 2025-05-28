@@ -107,14 +107,7 @@ jobs:
         id: payload
         run: |
           echo "BRANCH_NAME: ${{ env.BRANCH_NAME }}"
-          PAYLOAD="${{ toJson(github.event.client_payload) }}"
-          echo "$PAYLOAD"
-
-          echo "Payload:" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo '```json' >> $GITHUB_STEP_SUMMARY
-          echo "$PAYLOAD" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "${{ toJson(github.event.client_payload) }}"
 
       - name: UUIDGEN
         id: uuidgen
@@ -176,6 +169,14 @@ jobs:
       - name: Print github JSON
         run: |
           echo "${{ toJSON(github) }}"
+          
+
+          echo "Payload:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          echo "${{ toJSON(github) }}" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          
           cat <<EOF > scan_result.sarif
           {
             "top1": "A",
