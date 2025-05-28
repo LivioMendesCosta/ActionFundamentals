@@ -107,12 +107,13 @@ jobs:
         id: payload
         run: |
           echo "BRANCH_NAME: ${{ env.BRANCH_NAME }}"
-          echo "${{ toJson(github.event.client_payload) }}"
+          PAYLOAD="${{ toJson(github.event.client_payload) }}"
+          echo "$PAYLOAD"
 
           echo "Payload:" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo '```json' >> $GITHUB_STEP_SUMMARY
-          echo "${{ toJson(github.event.client_payload) }}" >> $GITHUB_STEP_SUMMARY
+          echo "$PAYLOAD" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
 
       - name: UUIDGEN
