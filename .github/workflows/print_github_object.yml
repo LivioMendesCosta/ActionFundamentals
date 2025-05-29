@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     if: true
     outputs:
-      flag: steps.print11.outputs.flag
+      flag: ${{ steps.print11.outputs.flag }}
     steps:
       - name: Print 1
         id: print1
