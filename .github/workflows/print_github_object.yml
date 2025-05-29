@@ -69,7 +69,7 @@ jobs:
           echo myvar=$my_var
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "myvar=$my_var" >> $GITHUB_STEP_SUMMARY
-          echo "flag=false" >> $GITHUB_OUTPUT
+          echo "flag=true" >> $GITHUB_OUTPUT
 
   Job2:
     runs-on: ubuntu-latest
