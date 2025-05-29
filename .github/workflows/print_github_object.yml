@@ -34,7 +34,7 @@ env:
 jobs:
   Job1:
     environment:
-      name: ${{ format('{0}-reviewers', inputs.environment) }}
+      name: ${{ inputs.environment == 'prd' && 'prd-reviewers' || '' }} #${{ format('{0}-reviewers', inputs.environment) }}
       url: https://argocd-qms.nos.pt/applications/argocd/my-app
     runs-on: ubuntu-latest
     if: true
@@ -44,7 +44,7 @@ jobs:
       - name: Print 1
         id: print1
         env:
-          ENVIRONMENT: ${{ inputs.environment == 'prd' && 'prd-reviewers'|| '' }} #${{ format('{0}-reviewers', inputs.environment) }}
+          ENVIRONMENT: ${{ inputs.environment == 'prd' && 'prd-reviewers' || '' }} #${{ format('{0}-reviewers', inputs.environment) }}
         run: |
           echo "my_var=1" >> $GITHUB_ENV
           echo myvar=$my_var
@@ -69,11 +69,11 @@ jobs:
           echo myvar=$my_var
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "myvar=$my_var" >> $GITHUB_STEP_SUMMARY
-          echo "flag=true" >> $GITHUB_OUTPUT
+          echo "flag=false" >> $GITHUB_OUTPUT
 
   Job2:
     runs-on: ubuntu-latest
-    #if: needs.Job1.outputs.flag == 'true'
+    if: needs.Job1.outputs.flag
     needs: [Job1]
     steps:
       - name: Print 2
