@@ -14,6 +14,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Check reviewers
+        id: check_reviewers
         env:
           GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -22,7 +23,13 @@ jobs:
           TEAMS=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers -H "Authorization: Bearer $GITHUB_TOKEN" | jq .teams)
           echo "TEAMS: $TEAMS"
 
+          if [ "$USERS" == "[]" ] && [ "$TEAMS" == "[]" ]
+          then
+            echo "AUTOMERGE=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Auto Merge Pull Request - ${{ github.event.pull_request.number }}
+        if: steps.check_reviewers.outputs.AUTOMERGE == 'true'
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
