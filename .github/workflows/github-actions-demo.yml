@@ -54,11 +54,12 @@ jobs:
           echo "SHA : $(git rev-parse HEAD)"
           cat .github/workflows/github-actions-demo.yml
         
-      - name: Create pull request
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh pr create --base test --title "Merge main into test" --body "Merge main into test"
+      #- name: Create pull request
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #  run: |
+      #    gh pr create --base test --title "Merge main into test" --body "Merge main into test"
+
   Inputs:
     runs-on: ubuntu-latest
     steps:
