@@ -17,9 +17,11 @@ jobs:
         id: check_reviewers
         env:
           GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+          REPOSITORY: ${{ github.repository }}
+          PULL_REQUEST: ${{ github.event.pull_request.number }}
         run: |
-          USERS=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers -H "Authorization: Bearer $GITHUB_TOKEN" | jq .users)
-          TEAMS=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers -H "Authorization: Bearer $GITHUB_TOKEN" | jq .teams)
+          USERS=$(curl -s -X GET https://api.github.com/repos/$REPOSITORY/pulls/$PULL_REQUEST/requested_reviewers -H "Authorization: Bearer $GITHUB_TOKEN" | jq .users)
+          TEAMS=$(curl -s -X GET https://api.github.com/repos/$REPOSITORY/pulls/$PULL_REQUEST/requested_reviewers -H "Authorization: Bearer $GITHUB_TOKEN" | jq .teams)
 
           if [ "$USERS" == "[]" ] && [ "$TEAMS" == "[]" ]
           then
