@@ -13,7 +13,25 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: peter-evans/enable-pull-request-automerge@v3
+      - name: Check reviewers
+        id: check_reviewers
+        env:
+          GITHUB_TOKEN:  ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          USERS=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers -H "Authorization: Bearer $GITHUB_TOKEN" | jq .users)
+          echo "USERS: $USERS"
+          TEAMS=$(curl -s -X GET https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/requested_reviewers -H "Authorization: Bearer $GITHUB_TOKEN" | jq .teams)
+          echo "TEAMS: $TEAMS"
+
+          if [ "$USERS" == "[]" ] && [ "$TEAMS" == "[]" ]
+          then
+            exit 0
+          else
+            exit 1
+          fi
+
+      - name: Auto Merge Pull Request - ${{ github.event.pull_request.number }}
+        uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           pull-request-number: ${{ github.event.pull_request.number }}
