@@ -25,7 +25,7 @@ jobs:
 
           if [ "$USERS" == "[]" ] && [ "$TEAMS" == "[]" ]
           then
-            echo "AUTOMERGE=true" >> $GITHUB_OUTPUT
+            exit 1
           fi
 
       - name: Auto Merge Pull Request - ${{ github.event.pull_request.number }}
