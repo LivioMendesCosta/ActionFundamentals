@@ -25,11 +25,12 @@ jobs:
 
           if [ "$USERS" == "[]" ] && [ "$TEAMS" == "[]" ]
           then
+            exit 0
+          else
             exit 1
           fi
 
       - name: Auto Merge Pull Request - ${{ github.event.pull_request.number }}
-        if: steps.check_reviewers.outputs.AUTOMERGE == 'true'
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
