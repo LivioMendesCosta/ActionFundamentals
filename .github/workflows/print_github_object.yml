@@ -30,7 +30,6 @@ on:
 
 env:
   BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
-  CONDITION: ${{ inputs.environment == 'dev' }}
 
 jobs:
   Job1:
@@ -41,6 +40,7 @@ jobs:
     if: true
     outputs:
       flag: ${{ steps.print11.outputs.flag }}
+      CONDITION: ${{ steps.print11.outputs.CONDITION }}
     steps:
       - name: Print 1
         id: print1
@@ -71,10 +71,11 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "myvar=$my_var" >> $GITHUB_STEP_SUMMARY
           echo "flag=true" >> $GITHUB_OUTPUT
+          echo "CONDITION=${{ inputs.environment == 'dev' }}" >> $GITHUB_OUTPUT
 
   Job2:
     runs-on: ubuntu-latest
-    if: ${{ needs.Job1.outputs.flag == 'true' && env.CONDITION }}
+    if: needs.Job1.outputs.flag == 'true' && needs.Job1.outputs.CONDITION
     needs: [Job1]
     steps:
       - name: Print 2
