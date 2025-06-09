@@ -30,6 +30,7 @@ on:
 
 env:
   BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
+  CONDITION: ${{ inputs.environment == 'dev' }}
 
 jobs:
   Job1:
@@ -73,7 +74,7 @@ jobs:
 
   Job2:
     runs-on: ubuntu-latest
-    if: needs.Job1.outputs.flag == 'true'
+    if: ${{ needs.Job1.outputs.flag == 'true' && env.CONDITION }}
     needs: [Job1]
     steps:
       - name: Print 2
