@@ -73,7 +73,7 @@ jobs:
           echo "myvar=$my_var" >> $GITHUB_STEP_SUMMARY
           echo "flag=true" >> $GITHUB_OUTPUT
           echo "CONDITION=${{ inputs.environment == 'dummy' }}" >> $GITHUB_OUTPUT
-          echo "SECRET_TEST${{ secrets.TEST }}" >> $GITHUB_OUTPUT
+          echo "SECRET_TEST=${{ secrets.TEST }}" >> $GITHUB_OUTPUT
 
   Job2:
     runs-on: ubuntu-latest
