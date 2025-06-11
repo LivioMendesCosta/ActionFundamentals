@@ -75,6 +75,10 @@ jobs:
           echo "CONDITION=${{ inputs.environment == 'dummy' }}" >> $GITHUB_OUTPUT
           echo "SECRET_TEST=${{ secrets.TEST }}" >> $GITHUB_OUTPUT
 
+      - name: Echo print11
+        run: |
+          echo "SECRET_TEST: ${{ steps.print11.outputs.SECRET_TEST }}"
+
   Job2:
     runs-on: ubuntu-latest
     if: needs.Job1.outputs.flag == 'true' && needs.Job1.outputs.CONDITION == 'true'
