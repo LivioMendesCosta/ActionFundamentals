@@ -48,6 +48,7 @@ jobs:
         env:
           ENVIRONMENT: ${{ inputs.environment == 'prd' && 'prd-reviewers' || '' }} #${{ format('{0}-reviewers', inputs.environment) }}
         run: |
+          python3 --version
           echo "my_var=1" >> $GITHUB_ENV
           echo myvar=$my_var
           echo "ENVIRONMENT = $ENVIRONMENT"
