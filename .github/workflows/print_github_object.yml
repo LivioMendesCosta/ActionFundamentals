@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check if repo exists
-        uses: ./.github/actions/run_hello
+        uses: ./.github/actions/run_hello@test
