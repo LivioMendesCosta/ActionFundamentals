@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check if repo exists
-        uses: LivioMendesCosta/ActionFundamentals/.github/actions/run_hello@test
+        uses: LivioMendesCosta/ActionFundamentals/.github/actions/run_hello@${{ env.BRANCH_NAME }}
