@@ -43,6 +43,9 @@ jobs:
       CONDITION: ${{ steps.print11.outputs.CONDITION }}
       SECRET_TEST: ${{ steps.print11.outputs.SECRET_TEST }}
     steps:
+      - name: Create annotation for build error
+        run: echo "::error file=app.js,line=1::Missing semicolon"
+
       - name: Print 1
         id: print1
         env:
