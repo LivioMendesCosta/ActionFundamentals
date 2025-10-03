@@ -28,6 +28,10 @@ on:
         description: "Environment"
         type: environment
 
+concurrency:
+  group: "print_github_object"
+  cancel-in-progress: false
+
 env:
   BRANCH_NAME: ${{ github.base_ref || github.ref_name }}
 
