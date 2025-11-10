@@ -52,7 +52,8 @@ jobs:
 
       - name: Print Env Var
         if: vars.VARIABLE != ''
-        run: echo "VAR: ${{ vars.VARIABLE }}"
+        run: |
+          echo "VAR: ${{ vars.VARIABLE }}"
 
       - name: Print 1
         id: print1
