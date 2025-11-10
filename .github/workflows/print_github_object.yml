@@ -106,7 +106,6 @@ jobs:
           echo ${{ needs.Job1.outputs.SECRET_TEST }}
 
   GitHub:
-    if: jobs.Job1.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
