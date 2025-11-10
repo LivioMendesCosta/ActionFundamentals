@@ -50,6 +50,10 @@ jobs:
       - name: Create annotation for build error
         run: echo "::error file=README.md,line=1::Check header"
 
+      - name: Print Env Var
+        if: vars.VARIABLE != ''
+        run: echo "VAR: ${{ vars.VARIABLE }}"
+
       - name: Print 1
         id: print1
         env:
