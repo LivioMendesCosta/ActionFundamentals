@@ -83,7 +83,7 @@ jobs:
           echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
 
           echo "LABELS: $LABELS"
-          if echo "$LABELS" | jq 'any(.[]; .name == "deploy")'
+          if echo "$LABELS" | jq -e 'any(.[]; .name == "deploy")'
           then
             echo "DEPLOY"
           else
