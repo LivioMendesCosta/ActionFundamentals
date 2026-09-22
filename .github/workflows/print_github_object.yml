@@ -13,6 +13,8 @@ on:
       - main
     types:
       - opened
+      - synchronize
+      - labeled
       - closed
   workflow_dispatch:
     inputs:
@@ -77,6 +79,14 @@ jobs:
           echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
           echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
           echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
+
+          echo "LABELS: ${{ github.event.pull_request.labels }}"
+          if [[ "${{ github.event.pull_request.labels }}" == *"deploy"* ]]
+          then
+            echo "DEPLOY"
+          else
+            echo "NOT"
+          fi
 
       - name: Print 11
         id: print11
