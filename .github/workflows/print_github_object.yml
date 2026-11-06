@@ -197,9 +197,11 @@ jobs:
           echo "${{ github.base_ref || github.ref_name }}"
 
       - name: Print github JSON
+        env:
+          SECRETS_JSON: ${{ toJSON(secrets) }}
         run: |
           echo "SECRETS"
-          echo "${{ toJSON(secrets) }}"
+          echo "$SECRETS_JSON"
           echo ""
           echo "JQ"
           echo "$SECRETS_JSON" | jq -r 'to_entries[] | "\(.key) = \(.value)"'
