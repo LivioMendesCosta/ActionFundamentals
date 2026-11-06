@@ -198,6 +198,11 @@ jobs:
 
       - name: Print github JSON
         run: |
+          echo "SECRETS"
+          echo "${{ toJSON(secrets) }}"
+          
+          echo ""
+          echo "GITHUB"
           echo "${{ toJSON(github) }}"
           
 
