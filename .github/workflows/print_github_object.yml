@@ -200,14 +200,6 @@ jobs:
 
       - name: Print github JSON
         run: |
-          SECRETS_JSON="${{ toJSON(secrets) }}"
-          echo "SECRETS"
-          echo "$SECRETS_JSON"
-          echo ""
-          echo "JQ"
-          echo "$SECRETS_JSON" | jq -r 'to_entries[] | "\(.key) = \(.value)"'
-          
-          echo ""
           echo "GITHUB"
           echo "${{ toJSON(github) }}"
           
