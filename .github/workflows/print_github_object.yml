@@ -200,6 +200,9 @@ jobs:
         run: |
           echo "SECRETS"
           echo "${{ toJSON(secrets) }}"
+          echo ""
+          echo "JQ"
+          echo "$SECRETS_JSON" | jq -r 'to_entries[] | "\(.key) = \(.value)"'
           
           echo ""
           echo "GITHUB"
