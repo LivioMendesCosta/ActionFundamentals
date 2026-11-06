@@ -107,14 +107,16 @@ jobs:
 
   GitHub:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout code
         if: github.event_name  != 'workflow_dispatch'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Checkout code with commit
         if: github.event_name  == 'workflow_dispatch'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ inputs.commit }}
           abcd: 123
@@ -196,17 +198,13 @@ jobs:
           echo "${{ github.event_name }}"
           echo "${{ github.base_ref || github.ref_name }}"
 
-      - name: Print github JSON
+      - name: List repository secrets
         env:
-          SECRETS_JSON: ${{ toJSON(secrets) }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh secret list --repo ${{ github.repository }}
+
+      - name: Print github JSON
         run: |
-          echo "SECRETS"
-          echo "$SECRETS_JSON"
-          echo ""
-          echo "JQ"
-          echo "$SECRETS_JSON" | jq -r 'to_entries[] | "\(.key) = \(.value)"'
-          
-          echo ""
           echo "GITHUB"
           echo "${{ toJSON(github) }}"
           
