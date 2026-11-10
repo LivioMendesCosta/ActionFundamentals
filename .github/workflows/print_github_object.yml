@@ -46,6 +46,7 @@ jobs:
 
   job2_need:
     name: JOB2 Needs
+    if: always()
     runs-on: ubuntu-latest
     needs:
       - job1_need
