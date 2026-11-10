@@ -38,6 +38,7 @@ env:
 jobs:
   job1_need:
     name: JOB1 Needs
+    continue-on-error: true
     runs-on: ubuntu-latest
     steps:
       - name: Echo
